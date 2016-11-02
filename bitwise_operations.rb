@@ -26,7 +26,7 @@ def closest_with_equal_weight n
   bitmask = ~n & (n+1)
 
   if bitmask == 1
-    # least significant one 
+    # least significant one
     bitmask = n & ~(n-1)
   end
 
