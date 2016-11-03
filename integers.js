@@ -8,6 +8,7 @@ function reverse(n){
   return result;
 }
 
+
 function rand(n){
   const binaryLength = Math.floor(Math.log2(n)) + 1;
 
