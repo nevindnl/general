@@ -24,25 +24,39 @@ function primes(n){
 }
 
 
+function sample(arr, n){
+  // symmetry
+  // randomness
+
+  // swap to the side
+  const result = arr.slice();
+
+  for(let i = 0; i < n; i++){
+    let random = Math.floor(Math.random() * (result.length - i));
+    [result[i], result[random]] = [result[random], result[i]];
+  }
+
+  return result.slice(0, n);
+
+  // space: result: replace array (n) with indices hash (k, since k swaps)
+}
+
+// induction
+// randomness
+// streaming sample, sample(n)
+
+
 function permute(arr, permutation){
   // cyclic swaps
   for (let i = 0; i < arr.length; i++){
-    while (permutation[i] != i){
+    while (permutation[i] !== i){
       const swapIndex = permutation[i];
 
       [arr[i], arr[swapIndex]] = [arr[swapIndex], arr[i]];
       [permutation[i], permutation[swapIndex]] = [permutation[swapIndex], permutation[i]];
-    //
+    }
   }
 }
 
-function sample(arr, n){
-  // symmetry
-  // swap to sequester
-  for(let i = 0; i < n; i++){
-    let random = Math.floor(Math.random() * (arr.length - i));
-    [arr[i], arr[random]] = [arr[random], arr[i]];
-  }
-
-  return arr.slice(0, n);
-}
+// cyclic swaps
+// 2D rotate
