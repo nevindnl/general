@@ -60,3 +60,50 @@ function permute(arr, permutation){
 
 // cyclic swaps
 // 2D rotate
+
+
+// additive steps
+function maxSubarrayDifference(arr){
+  let reverse = arr.slice().reverse();
+
+  let minCb = (a, b) => a < b;
+  let maxCb = (a, b) => a > b;
+
+  let minBefore = maxDifference(arr, minCb);
+  let minAfter = maxDifference(reverse, minCb);
+  let maxBefore = maxDifference(arr, maxCb);
+  let maxAfter = maxDifference(reverse, maxCb);
+
+  let result = [];
+  for (let i = 0; i < arr.length; i++){
+    result.push(
+      Math.max(
+        Math.abs(maxAfter[i] - minBefore[i]),
+        Math.abs(maxBefore[i] - minAfter[i])
+      )
+    );
+  }
+
+  return Math.max(...result);
+}
+
+function maxDifference(arr, cb){
+  const result = [0];
+
+  let current = 0;
+  for (let i = 0; i < arr.length; i++) {
+    let next = current + arr[i];
+
+    if (!cb(next, 0)) {
+      current = 0;
+      continue;
+    }
+
+    if (cb(next, current)) {
+      current = next;
+    }
+
+    let last = result[result.length - 1];
+    current < last ? result.push(current) : result.push(last);
+  }
+}
