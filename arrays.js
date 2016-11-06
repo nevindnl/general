@@ -62,7 +62,7 @@ function permute(arr, permutation){
 // 2D rotate
 
 
-// additive steps
+// multiple passes
 function maxSubarrayDifference(arr){
   let reverse = arr.slice().reverse();
 
