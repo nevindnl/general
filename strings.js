@@ -46,7 +46,7 @@ function prefixLengths(s){
   const result = [];
 
   for(let i = 0; i < s.length; i++){
-  	let current = result[result.length - 1];
+    let current = result[result.length - 1];
 
     if (s[i] === s[current]){
       result.push(current + 1);
