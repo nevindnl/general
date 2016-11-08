@@ -107,3 +107,27 @@ function maxDifference(arr, cb){
     current < last ? result.push(current) : result.push(last);
   }
 }
+
+function checkArithmeticProgressions(arr, ranges){
+  const endIndices = [];
+
+  let start = 0;
+  let end = 1;
+  let diff = arr[end] - arr[start];
+
+  for (;end < arr.length; end++) {
+    if (arr[end + 1] - arr[end] !== diff) {
+      for (let i = 0; i < end - start; i++) {
+        endIndices.push(end);
+      }
+
+      start = end;
+      diff = arr[start + 1] - arr[start];
+    }
+  }
+
+  return ranges.map(range => {
+    [start, end] = range;
+    return end <= endIndices[start];
+  });
+}
